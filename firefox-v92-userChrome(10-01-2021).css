@@ -274,7 +274,7 @@ menupopup.textbox-contextmenu:nth-child(4) > menuseparator:nth-child(3):hover, m
 #placesContext_openSeparator:hover, #view-menu-popup > menuseparator:nth-child(3):hover, #viewFullZoomMenu > menupopup:nth-child(4) > menuseparator:nth-child(3):hover, 
 #viewFullZoomMenu > menupopup:nth-child(4) > menuseparator:nth-child(5):hover, #placesContext_deleteSeparator:hover, #toolbar-context-menu > menuseparator:nth-child(4):hover, 
 #historyUndoPopup > menuseparator:nth-child(2):hover, #historyUndoWindowPopup > menuseparator:nth-child(2):hover, #context-sep-selectall:hover, #frame-sep:hover, #context-media-eme-separator:hover, 
-#context-media-eme-separator:hover, #context-sep-navigation:hover, #context-sep-open:hover, #context-sep-sendlinktodevice:hover {
+#context-media-eme-separator:hover, #context-sep-navigation:hover, #context-sep-open:hover, #context-sep-sendlinktodevice:hover, #passwordmgr-items-separator:hover {
         background-color: #fff !important;
 }
 menu[disabled="true"], menuitem[disabled="true"], [disabled="true"] {
