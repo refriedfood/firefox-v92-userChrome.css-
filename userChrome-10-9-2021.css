@@ -1,0 +1,299 @@
+/*---------------disable Proton UI v91+ changes but don’t restore colors in title bar, also shortens padding in menus--------------*/
+.tab-background{
+border-radius: 0px 0px !important;
+margin-bottom: 0px !important;
+}
+.tabbrowser-tab:not([selected=true]):not([multiselected=true]) .tab-background{
+/*background-color: color-mix(in srgb, currentColor 0%, transparent);*/
+    background-color: #e3e4e6;
+    border-radius: 0px 0px !important;
+    border-right: 1px solid var(--lwt-background-tab-separator-color, rgba(0, 0, 0, .10)) !important;
+    margin-bottom: 0px !important;
+}
+menupopup > menu, menupopup > menuitem{
+padding-block: 2px !important;
+min-height: 0px !important;
+}
+:root{
+--arrowpanel-menuitem-padding: 2px !important;
+}
+
+/* -------------------- active tab color ----*/
+.tabbrowser-tab[selected="true"] .tab-background {
+    background: #f0f1f2 !important;
+}
+
+/*-------------------- Remove padding between tabs ----*/
+.tabbrowser-tab {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/*-------------------- change color of bg behind tabs & menus -----*/
+.scrollbox-clip {
+      background-color: #e3e4e6 !important;
+}
+menupopup > *:not(label):not([disabled="true"]):not(.menu-iconic-left):not(.menu-accel-container):not(image):not(:hover) {
+    color: #000 !important;
+    background-color: #fff !important;
+}
+menupopup:not(#BMB_bookmarksPopup) {
+    appearance: none !important;
+    background-color: #fff !important;
+    border: 0px solid transparent !important;
+}
+menuseparator {
+    appearance: none !important;
+    border-top: 1px solid var(--menu-border-color) !important;
+    border-bottom: none !important;
+    padding: 1px !important;
+    margin: 0px 0em !important;
+}
+
+/*-------------------------------------*** Proton Tabs Tweaks ***/
+
+/*------------------------------------Adjust tab corner shape, optionally remove space below tabs */
+
+#tabbrowser-tabs {
+    --user-tab-rounding: 0px;
+}
+.tab-background {
+    border-radius: var(--user-tab-rounding) var(--user-tab-rounding) 0px 0px !important;
+    margin-block: 1px 0 !important;
+}
+#scrollbutton-up, #scrollbutton-down { /* 6/10/2021 */
+    border-top-width: 1px !important;
+    border-bottom-width: 0 !important;
+}
+/*------------------------------------Container color bar visibility */
+.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-context-line {
+    margin: 0px max(calc(var(--user-tab-rounding) - 3px), 0px) !important;
+}
+
+/*------------------------------------Override Normal Density height to Compact Density height only for tabs */
+
+#TabsToolbar, #tabbrowser-tabs {
+    --tab-min-height: 29px !important;
+}
+/*------------------------------------Tweak for covering a line at the bottom of the active tab on some themes 8/11/2021 */
+#main-window[sizemode="normal"] #toolbar-menubar[autohide="true"] + #TabsToolbar, 
+#main-window[sizemode="normal"] #toolbar-menubar[autohide="true"] + #TabsToolbar #tabbrowser-tabs {
+    --tab-min-height: 30px !important;
+}
+#scrollbutton-up,
+#scrollbutton-down {
+    border-top-width: 0 !important;
+    border-bottom-width: 0 !important;
+}
+
+/*------------------------------------[Connected Tabs] Set a max height based on min-height plus margin-block: 1px 0 */
+#TabsToolbar, #TabsToolbar > hbox, #TabsToolbar-customization-target, #tabbrowser-arrowscrollbox  {
+    max-height: calc(var(--tab-min-height) + 1px) !important;
+}
+/*------------------------------------[Connected Tabs] Adjust padding around icons on buttons to avoid crushed images */
+#TabsToolbar-customization-target toolbarbutton > .toolbarbutton-icon, 
+#TabsToolbar-customization-target .toolbarbutton-text, 
+#TabsToolbar-customization-target .toolbarbutton-badge-stack,
+#scrollbutton-up,#scrollbutton-down {
+    padding-top: 7px !important;
+    padding-bottom: 6px !important;
+}
+
+/*------------------------------------Override font-size for tabs */
+
+.tabbrowser-tab {
+    font-size: 12px !important;
+}
+
+/*------------------------------------------------------------------------*/
+/*------------------------------------MINE------------------------------------*/
+
+/* ----------- this is for certain sites that try to open a pdf file, etc automatically and cause a drop down prompt - if it causes a problem with other sites, comment it out ----------- */
+
+.notificationbox-stack[notificationside="top"] > notification {
+    display: none;
+}
+
+/*--------------- removes flagfox from right click menu -------------------- */
+#_1018e4d6-728f-4b20-ad56-37578a4de76b_-menuitem-_Flagfox\:1\:submenu {
+    display: none !important;
+} 
+
+/*---------------  remove favorites button from location bar --------------- */
+#star-button, #star-button-box {
+    display: none !important;
+} 
+
+/* --------------- removes https large icon --------------- */
+#identity-box #identity-icon-labels {
+    display:none;
+}
+
+/* ---------------  removes unsorted bookmarks / Other Bookmarks from bookmarks dropdown */
+#BMB_unsortedBookmarks, #bookmarksMenuPopup menuseparator[builder="end"], #menu_unsortedBookmarks, #appmenu_bookmarksPopup menuseparator[builder="end"], #appmenu_unsortedBookmarks {
+    display: none !important;
+}
+#pageActionButton {
+    display: none;
+}
+
+/* ---------------  removes farright menu drop down button */
+#PanelUI-menu-button {
+    display: none !important;
+}
+
+/* --------------- Hide "Send Page to Device" and preceding separator from context menu --------------- */
+#contentAreaContextMenu #context-sendpagetodevice, 
+#contentAreaContextMenu #context-sep-sendpagetodevice {
+  display: none !important;
+}
+
+/*---------------  Display the status bar in Firefox Quantum (version 61+) permanently at the bottom of the browser window.
+http://www.optimiced.com/en/2018/02/11/restore-status-bar-in-firefox-quantum/ --------------- */
+
+#browser-bottombox { height: 20px; border-top: solid 1px #CCC; }
+
+.browserContainer>#statuspanel { left: 4px !important; bottom: 4px; transition-duration: 0s !important; transition-delay: 0s !important; background-color: transparent !important;}
+.browserContainer>#statuspanel>#statuspanel-inner>#statuspanel-label { margin-left: 0px !important; border: none !important; padding: 0px !important; background-color: transparent !important;}
+
+window[inFullscreen="true"] #browser-bottombox { display:none !important; }
+window[inFullscreen="true"] .browserContainer>#statuspanel[type="overLink"] #statuspanel-label { display:none !important; 
+}
+
+/*---------------  moves menu selections down from title (too high by default) ---- */
+#menubar-items {
+	margin-top: 4px !important;
+}
+
+/*---------------  This time, search with at bottom of address bar ----- */
+  #urlbar .search-one-offs:not([hidden]) {
+    display: none !important;
+  }
+
+/*---------------  Remove placeholder text from address bar and search bar by default -----*/
+#urlbar *|input::placeholder { opacity: 0 !important; 
+}
+#searchbar *|input::placeholder { opacity: 0 !important; 
+}
+
+/*---------------  Remove tab background shadow ----*/
+.tab-background {
+	box-shadow: none !important;
+}
+
+/*---------------  Remove tab space between tabs ----*/
+tab.tabbrowser-tab {
+	padding-left: 0 !important;
+}
+
+/*---------------  Remove tab if only one page open: https://github.com/MrOtherGuy/firefox-csshacks/blob/master/chrome/hide_tabs_with_one_tab.css ----*/
+:root{ --tab-block-margin: var(--proton-tab-block-margin) }
+
+:root[sizemode="normal"] #nav-bar{ --uc-window-drag-space-width: 20px }
+
+#titlebar{ -moz-appearance: none !important; }
+#TabsToolbar{ min-height: 0px !important }
+
+#tabbrowser-tabs, #tabbrowser-tabs > .tabbrowser-arrowscrollbox, #tabbrowser-arrowscrollbox{ min-height: 0 !important; }
+
+:root:not([customizing]) #tabbrowser-tabs .tabs-newtab-button,
+:root:not([customizing]) #tabs-newtab-button,
+:root:not([customizing]) #TabsToolbar-customization-target > .toolbarbutton-1,
+:root:not([customizing]) #TabsToolbar .titlebar-button{
+  -moz-appearance: none !important;
+  height: 0px;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  -moz-box-align: stretch;
+  margin: 0 !important;
+}
+.accessibility-indicator,
+.private-browsing-indicator{ 
+  height: unset !important;
+}
+.accessibility-indicator > hbox{ padding-block: 0 !important }
+
+#tabbrowser-tabs .tabbrowser-tab{ height: calc(var(--tab-min-height) + 2 * var(--tab-block-margin,0px)) }
+
+#tabbrowser-tabs .tabbrowser-tab[first-visible-tab="true"][last-visible-tab="true"]{
+  visibility: collapse !important;
+}
+
+/*---------------  Remove addressbar background shadow ----*/
+
+#urlbar[breakout][breakout-extend] > #urlbar-background {
+    box-shadow: none !important;
+}
+
+/*---------------  Remove addressbar & searchbar blue border and popout  & shadow ----*/
+#urlbar-background, #urlbar-container, .urlbar-input-box {
+	border: none !important;
+	box-shadow: none !important;
+	/*background-color: #f0f0f4;*/
+}
+#searchbar {
+	border: none !important;
+	box-shadow: none !important;
+}
+
+/*---------------  removes email as... from right click menu -----*/
+#context-sendimage { 
+	display:none !important; 
+}
+
+/*---------------- menu bar color, urlbar and searhbar color (and urlbar outline ----*/
+#toolbar-menubar {
+    background-color: #e3e4e6 !important;
+}
+#nav-bar-customization-target{
+    background-color: #f0f1f2 !important;
+}
+#urlbar-input-container {
+    background-color: #ffffff !important;
+}
+#searchbar {
+    background-color: #ffffff !important;
+}
+#scrollbox {
+    background-color: #e3e4e6 !important;
+}
+#urlbar[open] {
+    border: 1px solid #f0f0f4 !important;
+}
+
+/*---------------- right click menu top highlight color and separator color ----*/
+#aboutSeparator:hover, #devToolsSeparator:hover, #prefSep:hover, #organizeBookmarksSeparator:hover,
+#bookmarksToolbarSeparator:hover, #bookmarksMenuItemsSeparator:hover,
+.bookmarks-actions-menuseparator:hover, #startHistorySeparator:hover, #sanitizeSeparator,
+#menu_viewPopup > menuseparator:hover, #menu_EditPopup > menuseparator:hover,
+#menu_FilePopup > menuseparator:hover, #context-sep-bidi:hover, #context-sep-setbackground:hover, #context-sep-ctp:hover, #context-sep-setbackground:hover,
+#context-sep-ctp:hover, #context-sep-redo:hover, menupopup.textbox-contextmenu:nth-child(4) > menuseparator:nth-child(10):hover, 
+menupopup.textbox-contextmenu:nth-child(4) > menuseparator:nth-child(3):hover, menupopup.textbox-contextmenu:nth-child(3) > menuseparator:nth-child(3):hover, 
+#\30 _id_reloadmatic_webex-menuitem-_reloadmatic-mnu-separator-1:hover, #\30 _id_reloadmatic_webex-menuitem-_reloadmatic-mnu-separator-2:hover, 
+#toolbarItemsMenuSeparator:hover, #viewToolbarsMenuSeparator:hover, #placesContext_editSeparator:hover, #placesContext_editSeparator:hover, 
+#placesContext_openSeparator:hover, #view-menu-popup > menuseparator:nth-child(3):hover, #viewFullZoomMenu > menupopup:nth-child(4) > menuseparator:nth-child(3):hover, 
+#viewFullZoomMenu > menupopup:nth-child(4) > menuseparator:nth-child(5):hover, #placesContext_deleteSeparator:hover, #toolbar-context-menu > menuseparator:nth-child(4):hover, 
+#historyUndoPopup > menuseparator:nth-child(2):hover, #historyUndoWindowPopup > menuseparator:nth-child(2):hover, #context-sep-selectall:hover, #frame-sep:hover, #context-media-eme-separator:hover, 
+#context-media-eme-separator:hover, #context-sep-navigation:hover, #context-sep-open:hover, #context-sep-sendlinktodevice:hover, #passwordmgr-items-separator:hover, 
+#context-media-sep-video-commands:hover, #context-media-sep-commands:hover {
+        background-color: rgba(255, 255, 255, 1.0) !important;
+}
+menu[disabled="true"], menuitem[disabled="true"], [disabled="true"] {
+        background-color: #fff !important;
+}
+/*menuitem, menu {
+    -moz-appearance: none !important;
+    color: #000 !important;
+}*/
+menugroup {
+    padding: 1 !important;
+    background-color: #fff !important;
+}
+
+/*---------------- bookmarks tookbar drop down & addressbar button bg color ------*/
+#PersonalToolbar {
+    background-color: #f0f1f2 !important;
+}
+#forward-button, #back-button, #reload-button {
+    background-color: #f0f1f2 !important;
+}
